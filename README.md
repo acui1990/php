@@ -28,14 +28,14 @@ tlinux环境上搭建环境，部署PHP项目,我没有用yum和rpm这些安装�
 #make
 #make install 
 ```
-1.下载最新稳定版apache： http://apache.dataguru.cn//httpd/httpd-2.2.31.tar.bz2
-2.解压缩，#tar jxvf httpd-2.2.31.tar.bz2
-3.进入目录,  #cd  httpd-2.2.31
-4. configure,  ./configure —prefix=/usr/local/apache2
-5.#make;
-6.#make install;
-5.启动，#/usr/local/apache2/bin/apachectl -k start
-6.在浏览器中输入10.12.xx.xx/index.html， 如果显示It works就证明已经搭建成功。（默认部署在/usr/local/apache2/htdocs/index.html）
+- 下载最新稳定版apache： http://apache.dataguru.cn//httpd/httpd-2.2.31.tar.bz2
+- 解压缩，#tar jxvf httpd-2.2.31.tar.bz2
+- 进入目录,  #cd  httpd-2.2.31
+- configure,  ./configure —prefix=/usr/local/apache2
+- #make;
+- #make install;
+- 启动，#/usr/local/apache2/bin/apachectl -k start
+- 在浏览器中输入10.12.xx.xx/index.html， 如果显示It works就证明已经搭建成功。（默认部署在/usr/local/apache2/htdocs/index.html）
 
 ### 启动和关闭apache
 ```
@@ -49,27 +49,27 @@ MySQL可以通过Yum或其它安装包快速安装，也可以下载源代码编
 ## php安装
 ### libxml2安装
 这个是安装PHP必须的
-1.下载最新版本的源码：http://www.php.net/downloads.php， 文件名libxml2-git-snapshot.tar.gz
-2.解压缩，# tar zxvf  libxml2-2.6.32.tar.gz
-3.进入目录；# cd libxml2-2.6.32
-4.configure;  #./configure --prefix=/usr/local/libxml2
-5.#make;
-6.#make install
+- 下载最新版本的源码：http://www.php.net/downloads.php， 文件名libxml2-git-snapshot.tar.gz
+- 解压缩，# tar zxvf  libxml2-2.6.32.tar.gz
+- 进入目录；# cd libxml2-2.6.32
+- configure;  #./configure --prefix=/usr/local/libxml2
+- #make;
+- #make install
 
 ### PHP安装
-1.下载最新稳定版本PHP：http://www.php.net/downloads.php
-2.解压缩，#tar jxvf php-5.6.16.tar.bz2
-3.进入目录,  #cd php-5.6.16
-4. #./configure --prefix=/usr/local/php --with-mysql=/usr/local/mysql --with-apxs2=/usr/local/apache2/bin/apxs --with-libxml-dir=/usr/local/libxml2 --with-curl=/usr/local/curl
-5.#make;
-6.#make install
-7.修改APACHE的配置文件支持PHP vi /usr/local/apache2/conf/httpd.conf
+- 下载最新稳定版本PHP：http://www.php.net/downloads.php
+- 解压缩，#tar jxvf php-5.6.16.tar.bz2
+- 进入目录,  #cd php-5.6.16
+-  #./configure --prefix=/usr/local/php --with-mysql=/usr/local/mysql --with-apxs2=/usr/local/apache2/bin/apxs --with-libxml-dir=/usr/local/libxml2 --with-curl=/usr/local/curl
+- #make;
+- #make install
+- 修改APACHE的配置文件支持PHP vi /usr/local/apache2/conf/httpd.conf
 在AddType application/x-gzip .gz .tgz下面增加最后两行，如下：
 AddType application/x-compress .Z
 AddType application/x-gzip .gz .tgz
 AddType application/x-httpd-php .php
 AddType application/x-httpd-php-source .php5
-6.测试PHP，cd /usr/local/apache2/htdocs/; vi test.php；
+- 测试PHP，cd /usr/local/apache2/htdocs/; vi test.php；
 <?
 php phpinfo()
 ?>
