@@ -11,6 +11,14 @@ tlinux环境上搭建环境，部署PHP项目,我没有用yum和rpm这些安装�
  #tar vfx apr-1.5.2.tar.gz #解压缩
  #make install   
 ```
+### 安装expat
+```
+#tar vfx expat_2.0.1.orig.tar.gz
+#cd expat-2.0.1
+#./configure
+#make
+#make install
+```
 ### apr-until安装
 ```
 #tar vfx apr-util-1.5.4.tar.gz
@@ -19,42 +27,81 @@ tlinux环境上搭建环境，部署PHP项目,我没有用yum和rpm这些安装�
 #make
 #make install 
 ```
+### pcre安装
+```
+#tar jxvf pcre-8.00.tar.bz2
+#cd pcre-8.00
+#./configure --prefix=/usr/local/pcre
+#make 
+#make install
+```
+
 ### apache安装
-
 ```
-#tar vfx apr-util-1.5.4.tar.gz
-#cd apr-util-1.5.4  
-#./configure --prefix=/usr/local/apr/ --with-apr=/usr/local/apr/
+#tar jxvf httpd-2.4.38.tar.bz2
+#cp -r apr-1.6.5 httpd-2.4.38/srclib/apr
+#cp -r apr-util-1.6.1 httpd-2.4.38/srclib/apr-util
+#cp -r pcre-8.00 httpd-2.4.38/srclib/pcre
+#cd httpd-2.4.38
+#./configure --prefix=/usr/local/apache --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre --enable-mods-shared=most --enable-so --with-included-apr
 #make
-#make install 
+#make install
 ```
-- 下载最新稳定版apache： http://apache.dataguru.cn//httpd/httpd-2.2.31.tar.bz2
-- 解压缩，#tar jxvf httpd-2.2.31.tar.bz2
-- 进入目录,  #cd  httpd-2.2.31
-- configure,  ./configure —prefix=/usr/local/apache2
-- #make;
-- #make install;
-- 启动，#/usr/local/apache2/bin/apachectl -k start
-- 在浏览器中输入10.12.xx.xx/index.html， 如果显示It works就证明已经搭建成功。（默认部署在/usr/local/apache2/htdocs/index.html）
-
 ### 启动和关闭apache
 ```
-#/usr/local/apache2/bin/apachectl -k start
-#/usr/local/apache2/bin/apachectl -k stop
-#/usr/local/apache2/bin/apachectl -k restart
+- 启动apache
+- /usr/local/apache/bin/apachectl -k start
+- 重启apache
+- /usr/local/apache/bin/apachectl -k restart
+- 修改apache配置  /usr/local/apache/conf/
+- 在浏览器中输入http://9.146.192.254/index.html， 如果显示It works就证明已经搭建成功。（默认部署在/usr/local/apache/htdocs/index.html）
 ```
+
 ## MYSQL安装
 MySQL可以通过Yum或其它安装包快速安装，也可以下载源代码编译安装。从源代码编译安装MySQL有一些好处，如可以指定编译生成参数、优化编译、指定安装位置等。
 
-## php安装
-### libxml2安装
-这个是安装PHP必须的
-- 下载最新版本的源码：http://www.php.net/downloads.php， 文件名libxml2-git-snapshot.tar.gz
-- 解压缩，# tar zxvf  libxml2-2.6.32.tar.gz
-- 进入目录；# cd libxml2-2.6.32
-- configure;  #./configure --prefix=/usr/local/libxml2
-- #make;
-- #make install
+### 安装 libxml2
+```
+#cd /data/cuiyu
+#tar zxvf  libxml2-2.6.32.tar.gz
+#cd libxml2-2.6.32
+#./configure --prefix=/usr/local/libxml2
+#make
+#make install
+```
+
+### 安装 mcrypt库
+```
+#tar zxvf libmcrypt-2.5.8.tar.gz
+#cd libmcrypt-2.5.8
+#./configure
+#make
+#make install
+```
+
+### 安装curl
+```
+#cd /data/cuiyu
+#tar -zxf curl-7.42.1.tar.gz
+#cd curl-7.42.1
+#./configure --prefix=/usr/local/curl
+#make
+#make install
+```
+
+安装 mcrypt库
+cd /data/cuiyu
+tar zxvf libmcrypt-2.5.8.tar.gz
+cd libmcrypt-2.5.8
+./configure
+make
+make install安装 mcrypt库
+cd /data/cuiyu
+tar zxvf libmcrypt-2.5.8.tar.gz
+cd libmcrypt-2.5.8
+./configure
+make
+make install
 
 ### PHP安装
 - 下载最新稳定版本PHP：http://www.php.net/downloads.php
