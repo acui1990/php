@@ -81,7 +81,6 @@ MySQL可以通过Yum或其它安装包快速安装，也可以下载源代码编
 
 ### 安装curl
 ```
-#cd /data/cuiyu
 #tar -zxf curl-7.42.1.tar.gz
 #cd curl-7.42.1
 #./configure --prefix=/usr/local/curl
@@ -89,21 +88,16 @@ MySQL可以通过Yum或其它安装包快速安装，也可以下载源代码编
 #make install
 ```
 
-安装 mcrypt库
-cd /data/cuiyu
-tar zxvf libmcrypt-2.5.8.tar.gz
-cd libmcrypt-2.5.8
-./configure
-make
-make install安装 mcrypt库
-cd /data/cuiyu
-tar zxvf libmcrypt-2.5.8.tar.gz
-cd libmcrypt-2.5.8
-./configure
-make
-make install
-
 ### PHP安装
+```
+#cd /data/cuiyu
+#tar jxvf php-5.6.31.tar.bz2
+#cd php-5.6.31
+#./configure --with-apxs2=/usr/local/apache/bin/apxs --with-libxml-dir=/usr/local/libxml2 --with-curl=/usr/local/curl/ --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --without-pdo-sqlite --without-sqlite3 --without-sqlite --enable-mbstring --with-mhash --with-mcrypt --enable-soap --enable-PhpSandboxClient
+#make;
+#make install
+#cp php.ini-development /usr/local/lib/php.ini
+```
 - 下载最新稳定版本PHP：http://www.php.net/downloads.php
 - 解压缩，#tar jxvf php-5.6.16.tar.bz2
 - 进入目录,  #cd php-5.6.16
